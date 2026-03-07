@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace ConsoleTasks;
 
 public class Task1
@@ -42,7 +40,7 @@ public class Task1
         return zeroFirstPrefixSumCache;
     }
 
-    public int FindNewAlternate(int len, int start, int[] prefix = default)
+    public int FindNewAlternate(int len, int start, int[] prefix)
     {
         var newSegment = start == 0 ? 0 : prefix[start-1];
         var oldSegment = prefix[len - 1] - newSegment;
@@ -56,59 +54,5 @@ public class Task1
         }
 
         return oldSegment + newSegment;
-    }
-
-    private int CountAlternateCases(int current, string s)
-    {
-        var result = 0;
-        var isOdd = true;
-        for (int i = 0; i < s.Length; i++)
-        {
-            char x = s[current];
-            if (isOdd && x == '0' || !isOdd && x == '1')
-                result++;
-            isOdd = !isOdd;
-            current++;
-            if (current > s.Length - 1)
-                current = 0;
-        }
-
-        return result;
-    }
-
-    public int CountAlternateCases(string s)
-    {
-        return CountAlternateCases(0, s);
-    }
-
-    private StringBuilder Flip(StringBuilder sb, int index)
-    {
-        if (index < 0 || index >= sb.Length)
-            throw new ArgumentOutOfRangeException(nameof(index));
-        sb[index] = sb[index] == '1' ? '0' : '1';
-        return sb;
-    }
-
-    public string Flip(string s, int index)
-    {
-        var sb = new StringBuilder(s);
-        sb =  Flip(sb, index);
-        return sb.ToString();
-    }
-    
-    private StringBuilder Pull(StringBuilder sb)
-    {
-        if (sb.Length == 0)
-            throw new ArgumentException("Empty stringbuilder");
-        sb.Append(sb[0]);
-        sb.Remove(0, 1);
-        return sb;
-    }
-
-    public string Pull(string s)
-    {
-        var sb = new StringBuilder(s);
-        sb = Pull(sb);
-        return sb.ToString();
     }
 }

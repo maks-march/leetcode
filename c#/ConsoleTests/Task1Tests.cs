@@ -1,4 +1,3 @@
-using System.Text;
 using ConsoleTasks;
 using FluentAssertions;
 
@@ -39,10 +38,10 @@ public class Task1Tests
         action.Should().Throw<ArgumentException>();
     }
     
-    [TestCase("0101", ExpectedResult = new int[]{1,2,3,4})]
-    [TestCase("010", ExpectedResult = new int[]{1,2,3})]
-    [TestCase("1100", ExpectedResult = new int[]{0,1,2,2})]
-    [TestCase("10101", ExpectedResult = new int[]{0,0,0,0,0})]
+    [TestCase("0101", ExpectedResult = new []{1,2,3,4})]
+    [TestCase("010", ExpectedResult = new []{1,2,3})]
+    [TestCase("1100", ExpectedResult = new[]{0,1,2,2})]
+    [TestCase("10101", ExpectedResult = new []{0,0,0,0,0})]
     public int[] CountPrefixSumZeroFirst_IsCorrect(string s)
     {
         return _task.CountPrefixSumZeroFirst(s);
@@ -54,62 +53,5 @@ public class Task1Tests
     public int FindNewAlternate_IsCorrect(string s, int start)
     {
         return _task.FindNewAlternate(s.Length, start, _task.CountPrefixSumZeroFirst(s));
-    }
-    
-    [TestCase("0101", ExpectedResult = 4)]
-    [TestCase("1100", ExpectedResult = 2)]
-    [TestCase("10101", ExpectedResult = 0)]
-    public int CountAlternate_IsCorrect(string s)
-    {
-        return _task.CountAlternateCases(s);
-    }
-
-    [TestCase("0101", 1, ExpectedResult = "0001")]
-    [TestCase("0101", 3, ExpectedResult = "0100")]
-    public string Flip_DoSimple(string s, int index)
-    {
-        return _task.Flip(s, index);
-    }
-    
-    
-    [TestCase("0101", 3)]
-    [TestCase("0111", 3)]
-    public void Flip_DoApplyTwice(string s, int index)
-    {
-        var r = _task.Flip(s, index);
-        _task.Flip(r, index).Should().Be(s);
-    }
-    
-    [TestCase("0101", 4)]
-    [TestCase("0111", -1)]
-    public void Flip_Throws_OnInvalidIndex(string s, int index)
-    {
-        Action action = () => _task.Flip(s, index);
-        action.Should().Throw<ArgumentOutOfRangeException>();
-    }
-    
-    [TestCase("1001", ExpectedResult = "0011")]
-    [TestCase("0101", ExpectedResult = "1010")]
-    public string Pull_DoSimple(string s)
-    {
-        return _task.Pull(s);
-    }
-    
-    [TestCase("1001", 4, ExpectedResult = "1001")]
-    [TestCase("0101", 2, ExpectedResult = "0101")]
-    public string Pull_DoMultipleTimes(string s, int times)
-    {
-        for (int i = 0; i < times; i++)
-        {
-            s = _task.Pull(s);
-        }
-        return s;
-    }
-    
-    [Test]
-    public void Pull_Throws_OnEmpty()
-    {
-        Action action = () => _task.Pull(string.Empty);
-        action.Should().Throw<ArgumentException>();
     }
 }
