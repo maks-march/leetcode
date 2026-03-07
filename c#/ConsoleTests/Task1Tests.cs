@@ -7,6 +7,7 @@ namespace ConsoleTests;
 public class Task1Tests
 {
     private Task1 _task;
+    
     [SetUp]
     public void Setup()
     {
