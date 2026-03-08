@@ -2,6 +2,7 @@ using ConsoleTasks;
 
 namespace ConsoleTests;
 
+[TestFixture]
 public class Task2Tests
 {
     private Task2 _task;

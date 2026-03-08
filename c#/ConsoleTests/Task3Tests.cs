@@ -3,6 +3,7 @@ using FluentAssertions;
 
 namespace ConsoleTests;
 
+[TestFixture]
 public class Task3Tests
 {
     private Task3 _task;
