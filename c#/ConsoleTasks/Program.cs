@@ -6,8 +6,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var t = new MinimumWindowSubstring();
-        var r = t.MinWindow("ADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANCADOBECODEBANC", "ABCABCABCABCABCABCABC");
-        Console.WriteLine(r);
+        var t = "ab";
+        var s = "a" + "b";
+        var a = string.Format("{0}{1}", "a", "b");
+        Console.WriteLine(object.ReferenceEquals(t, s));
+        Console.WriteLine(object.ReferenceEquals(t, a));
     }
 }
