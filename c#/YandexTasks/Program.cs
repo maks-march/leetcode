@@ -7,7 +7,8 @@ public class Program
 {
     public static void Main()
     {
-        MedianElement.SolveInput();
-
+        // MedianElement.SolveInput();
+        // MaxCost.SolveInput();
+        KnightMove.SolveInput();
     }
 }
